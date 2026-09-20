@@ -22,7 +22,7 @@ export function Navigation({ items = defaultItems }: NavigationProps) {
 
   return (
     <nav className="bg-white border-b border-neutral-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2">
@@ -33,10 +33,10 @@ export function Navigation({ items = defaultItems }: NavigationProps) {
                   viewBox="0 0 24 24"
                   fill="white"
                 >
-                  <polygon points="5 3 19 12 5 21 5 3" />
+                  <path d="M4 20L12 4L14 10L10 10L18 20" fill="white" />
                 </svg>
               </div>
-              <span className="font-display-2 text-neutral-900">Lalalearn</span>
+              <span className="font-display-2 text-neutral-900">Vertex</span>
             </Link>
             <div className="hidden md:flex items-center gap-6">
               {items.map((item) => (
@@ -57,7 +57,7 @@ export function Navigation({ items = defaultItems }: NavigationProps) {
               ))}
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <button className="p-2 text-neutral-500 hover:text-neutral-700">
               <svg
                 width="20"
@@ -73,6 +73,12 @@ export function Navigation({ items = defaultItems }: NavigationProps) {
                 <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
               </svg>
             </button>
+            <div className="w-9 h-9 rounded-full bg-neutral-300 overflow-hidden">
+              <svg viewBox="0 0 36 36" fill="none" className="w-full h-full">
+                <circle cx="18" cy="14" r="6" fill="#94a3b8" />
+                <ellipse cx="18" cy="30" rx="10" ry="8" fill="#94a3b8" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
