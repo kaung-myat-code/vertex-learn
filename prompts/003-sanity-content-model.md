@@ -95,8 +95,12 @@ Further decisions I am making, flagged here rather than buried in code:
 - **Resource `size` is not stored.** `resource-card.tsx` shows a size, but resources are external
   URLs, so a size would be author-typed and rot. The card's `size` prop will be fed the resource
   `type` label or left blank by the page task; noted under "Needs your attention".
-- **A lesson does not store its parent course** (AGENTS.md §8). The lesson query derives the course
-  with a reverse reference: `*[_type == "course" && references(^._id)][0]`.
+- **A lesson does not store its parent course** (AGENTS.md §8). The lesson route carries both
+  `courseSlug` and `lessonSlug` as params. `LESSON_WITH_CONTEXT_QUERY` takes both slugs, uses a
+  reverse reference to verify the lesson belongs to the given course, and returns the course's
+  module structure so the page can compute `moduleIndex` and `lessonIndex` in JS. This avoids
+  selecting an arbitrary course with `[0]` if a lesson were referenced by multiple courses, and
+  preserves correct Module N / Lesson N.M labels.
 - **Generated document IDs throughout** (`schema.md` §6). No slug-derived or deterministic `_id`s.
 - **`useCdn: false`** on the server client. The dataset is private and reads are token
   authenticated; freshness matters more than CDN latency, and Next's own cache sits in front.

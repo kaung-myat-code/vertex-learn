@@ -55,8 +55,8 @@ export const COURSE_BY_SLUG_QUERY = defineQuery(`
   }
 `)
 
-export const LESSON_BY_SLUG_QUERY = defineQuery(`
-  *[_type == "lesson" && slug.current == $slug][0] {
+export const LESSON_WITH_CONTEXT_QUERY = defineQuery(`
+  *[_type == "lesson" && slug.current == $lessonSlug && references(*[_type == "course" && slug.current == $courseSlug]._id)][0] {
     _id,
     title,
     "slug": slug.current,
@@ -68,7 +68,19 @@ export const LESSON_BY_SLUG_QUERY = defineQuery(`
     notes,
     keyPoints,
     proTip,
-    resources
+    resources,
+    "course": *[_type == "course" && slug.current == $courseSlug][0] {
+      title,
+      "slug": slug.current,
+      modules[] {
+        _key,
+        title,
+        lessons[]-> {
+          _id,
+          "slug": slug.current
+        }
+      }
+    }
   }
 `)
 
