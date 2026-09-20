@@ -2,6 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  SignInButton,
+  SignUpButton,
+  Show,
+  UserButton,
+} from "@clerk/nextjs";
 
 interface NavItem {
   label: string;
@@ -73,12 +79,21 @@ export function Navigation({ items = defaultItems }: NavigationProps) {
                 <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
               </svg>
             </button>
-            <div className="w-9 h-9 rounded-full bg-neutral-300 overflow-hidden">
-              <svg viewBox="0 0 36 36" fill="none" className="w-full h-full">
-                <circle cx="18" cy="14" r="6" fill="#94a3b8" />
-                <ellipse cx="18" cy="30" rx="10" ry="8" fill="#94a3b8" />
-              </svg>
-            </div>
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button className="text-sm font-medium text-neutral-700 hover:text-primary-500 transition-colors">
+                  Sign in
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="px-4 py-1.5 text-sm font-medium rounded-radius-full bg-primary-500 text-white hover:bg-primary-400 transition-colors">
+                  Sign up
+                </button>
+              </SignUpButton>
+            </Show>
+            <Show when="signed-in">
+              <UserButton />
+            </Show>
           </div>
         </div>
       </div>
