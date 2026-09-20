@@ -81,6 +81,25 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Hero gradient background */
+.hero-gradient {
+  background: radial-gradient(ellipse at 50% 30%, #fef0e5 0%, #faf7f4 40%, var(--color-neutral-50) 100%);
+}
+
+/* Decorative bar chart gradient */
+.bar-gradient {
+  background: linear-gradient(to top, var(--color-primary-200), var(--color-primary-400));
+  opacity: 0.6;
+}
+
+/* Custom border-radius utilities */
+.rounded-radius-xs { border-radius: 4px; }
+.rounded-radius-sm { border-radius: 8px; }
+.rounded-radius-md { border-radius: 12px; }
+.rounded-radius-lg { border-radius: 16px; }
+.rounded-radius-xl { border-radius: 24px; }
+.rounded-radius-full { border-radius: 9999px; }
+
 /* Typography Scale */
 .font-display-1 {
   font-family: var(--font-display), Georgia, serif;
