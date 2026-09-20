@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
 import { SearchInput } from "@/components/SearchInput";
-import { Button } from "@/components/Button";
 import { CourseCard } from "@/components/Card";
 
 const courses = [
@@ -61,7 +61,10 @@ export default function Home() {
             <br className="hidden sm:block" /> finds the exact lessons across all your courses.
           </p>
 
-          <Button variant="primary" className="mb-10 px-6">
+          <Link
+            href="/courses"
+            className="inline-flex items-center justify-center gap-2 mb-10 px-6 h-11 text-base font-medium rounded-radius-full bg-primary-500 text-white hover:bg-primary-400 active:bg-primary-500 transition-colors duration-150"
+          >
             Explore Courses
             <svg
               width="18"
@@ -76,11 +79,12 @@ export default function Home() {
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
-          </Button>
+          </Link>
 
           <div className="max-w-2xl mx-auto">
             <SearchInput
               placeholder="Ask anything about your learning..."
+              aria-label="Search learning"
               className="!h-14 !text-base !rounded-radius-lg !pl-12 !pr-20 shadow-md"
             />
           </div>
