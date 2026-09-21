@@ -14,7 +14,7 @@ export const ALL_COURSES_QUERY = defineQuery(`
     instructor->{ name, "slug": slug.current, photo },
     category->{ title, "slug": slug.current },
     "moduleCount": count(modules),
-    "lessonCount": count(modules[].lessons)
+    "lessonCount": count(modules[].lessons[])
   }
 `)
 
